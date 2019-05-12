@@ -8,9 +8,10 @@ public class Mario : MonoBehaviour
     private Rigidbody2D rb2d;
     public float speed = 5f;
     public float maxSpeed = 7f;
-    public float jumpPower = 100f;
+    public float jumpPower = 125f;
     public GameObject fuego;
     public AudioControllerMario controlAudio;
+    public UI_Mario uiController;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +43,11 @@ public class Mario : MonoBehaviour
         }
     }
 
-    //Si choca con la flor se cambia de personaje por el PowerUp
+ 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Flor")
+        //Si choca con la flor se cambia de personaje por el PowerUp
+        if (collision.gameObject.name == "Flor")
         {
             controlAudio.mejorar = true;
             Destroy(collision.gameObject);
@@ -53,11 +55,38 @@ public class Mario : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        //Si choca con el enemigo se muere mario
         if (collision.gameObject.name == "Enemigo")
         {
             controlAudio.fin = true;
-            Destroy(gameObject);
-            
+            gameObject.SetActive(false);
+
+        }
+
+        //Si choca con la caparazon se suman puntos
+        if (collision.gameObject.name == "Caparazon")
+        {
+            uiController.puntos = uiController.puntos + 100;
+            uiController.SetpuntosText();
+            controlAudio.cap = true;
+            Destroy(collision.gameObject);
+
+        }
+
+        //Si choca con una moneda se suma a su contador
+        if (collision.gameObject.tag == "Coin")
+        {
+            uiController.contador = uiController.contador + 1;
+            uiController.SetcoinText();
+            controlAudio.gotCoin = true;
+            Destroy(collision.gameObject);
+
+        }
+
+        //Si choca con la bandera gana 
+        if (collision.gameObject.tag == "Flag")
+        {
+            controlAudio.gano = true;
         }
     }
    

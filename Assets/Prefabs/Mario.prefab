@@ -118,7 +118,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1332475627
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300034, guid: 9de9fcfa39e878e49905194282b39fbd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -210,8 +210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  speed: 4.5
-  maxSpeed: 5
-  jumpPower: 100
+  speed: 5
+  maxSpeed: 7
+  jumpPower: 125
   fuego: {fileID: 0}
   controlAudio: {fileID: 0}

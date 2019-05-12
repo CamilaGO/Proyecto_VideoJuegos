@@ -6,10 +6,12 @@ public class MarioFuego : MonoBehaviour
 {
     public Animator animator;
     private Rigidbody2D rb2d;
-    public float speed = 4.5f;
-    public float maxSpeed = 5f;
-    public float jumpPower = 100f;
+    public float speed = 5f;
+    public float maxSpeed = 7f;
+    public float jumpPower = 125f;
     public AudioControllerMario controlAudio;
+    public GameObject clasic;
+    public UI_Mario uiController;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +42,39 @@ public class MarioFuego : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Si choca con el enemigo se destruye el enemigo
         if (collision.gameObject.name == "Enemigo")
         {
-            controlAudio.gano = true;
+            controlAudio.enemyCol = true;
             Destroy(collision.gameObject);
+        }
+
+        //Si choca con la caparazon se cambia de personaje porque se pierde el PowerUp
+        if (collision.gameObject.name == "Caparazon")
+        {
+            uiController.puntos = uiController.puntos + 100; 
+            controlAudio.cap = true;
+            Destroy(collision.gameObject);
+            clasic.SetActive(true);
+            gameObject.SetActive(false);
+
+        }
+
+        //Si choca con una moneda se suma a su contador
+        if (collision.gameObject.tag == "Coin")
+        {
+            uiController.contador = uiController.contador + 1;
+            uiController.SetcoinText();
+            Destroy(collision.gameObject);
+            controlAudio.gotCoin = true;
+            Destroy(collision.gameObject);
+
+        }
+
+        //Si choca con la bandera gana 
+        if (collision.gameObject.tag == "Flag")
+        {
+            controlAudio.gano = true;
         }
     }
 }
