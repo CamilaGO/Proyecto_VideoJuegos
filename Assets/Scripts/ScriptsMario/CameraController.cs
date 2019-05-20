@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Se sigue al jugador que ste activo
         if (player.activeSelf)
         {
             playerPosition = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);

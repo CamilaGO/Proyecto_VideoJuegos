@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 838902743105936415}
   m_Layer: 0
   m_Name: MarioFuego
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1332475627
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300260, guid: 9de9fcfa39e878e49905194282b39fbd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -120,6 +120,9 @@ MonoBehaviour:
   maxSpeed: 5
   jumpPower: 100
   controlAudio: {fileID: 0}
+  clasic: {fileID: 0}
+  banderaAnimada: {fileID: 0}
+  uiController: {fileID: 0}
 --- !u!50 &838902743105936414
 Rigidbody2D:
   serializedVersion: 4

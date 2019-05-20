@@ -12,12 +12,14 @@ public class Mario : MonoBehaviour
     public GameObject fuego;
     public AudioControllerMario controlAudio;
     public UI_Mario uiController;
+    public GameObject banderaAnimada;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        banderaAnimada.SetActive(false);
     }
 
     // Update is called once per frame
@@ -46,23 +48,7 @@ public class Mario : MonoBehaviour
  
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Si choca con la flor se cambia de personaje por el PowerUp
-        if (collision.gameObject.name == "Flor")
-        {
-            controlAudio.mejorar = true;
-            Destroy(collision.gameObject);
-            fuego.SetActive(true);
-            gameObject.SetActive(false);
-        }
-
-        //Si choca con el enemigo se muere mario
-        if (collision.gameObject.name == "Enemigo")
-        {
-            controlAudio.fin = true;
-            gameObject.SetActive(false);
-
-        }
-
+      
         //Si choca con la caparazon se suman puntos
         if (collision.gameObject.name == "Caparazon")
         {
@@ -71,6 +57,36 @@ public class Mario : MonoBehaviour
             controlAudio.cap = true;
             Destroy(collision.gameObject);
 
+        }
+
+        if (collision.gameObject.tag == "Cubo")
+        {
+            Debug.Log(collision.gameObject.tag);
+            controlAudio.rompeCube = true;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Si choca con la flor se cambia de personaje por el PowerUp
+        if (collision.gameObject.name == "Flor")
+        {
+            controlAudio.mejorar = true;
+            Destroy(collision.gameObject);
+            fuego.SetActive(true);
+            gameObject.SetActive(false); 
+        }
+
+        //Si choca con la bandera gana 
+        if (collision.gameObject.tag == "Flag")
+        {
+            controlAudio.gano = true;
+            collision.gameObject.SetActive(false);
+            banderaAnimada.SetActive(true);  //Se baja la bandera y mario ya no se puede mover
+            speed = 0f;
+            uiController.final = true;
+            uiController.SetFinal();
         }
 
         //Si choca con una moneda se suma a su contador
@@ -83,11 +99,42 @@ public class Mario : MonoBehaviour
 
         }
 
-        //Si choca con la bandera gana 
-        if (collision.gameObject.tag == "Flag")
+        //Si choca con el enemigo se muere mario
+        if (collision.gameObject.tag == "Enemy")
+        {
+            controlAudio.fin = true;
+            gameObject.SetActive(false);
+            uiController.final = false;
+            uiController.SetFinal();
+
+        }
+
+
+        if (collision.gameObject.name == "Tuberia")
+        {
+            controlAudio.tuberia = true;
+            gameObject.transform.position = new Vector2(159f, gameObject.transform.position.y);
+
+        }
+
+        if (collision.gameObject.name == "Hongo")
+        {
+            uiController.puntos = uiController.puntos + 200;
+            controlAudio.tuberia = true;
+            Destroy(collision.gameObject);
+            controlAudio.gotCoin = true;
+
+        }
+
+        if(collision.gameObject.name == "Princesa")
         {
             controlAudio.gano = true;
+            speed = 0f;
+            uiController.final = true;
+            uiController.SetFinal();
         }
+
+
     }
-   
+
 }

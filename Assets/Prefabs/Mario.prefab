@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 7012650024050373963}
   m_Layer: 0
   m_Name: Mario
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,8 +210,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  speed: 5
-  maxSpeed: 7
-  jumpPower: 125
+  speed: 7
+  maxSpeed: 9
+  jumpPower: 200
   fuego: {fileID: 0}
   controlAudio: {fileID: 0}
+  uiController: {fileID: 0}
+  banderaAnimada: {fileID: 0}

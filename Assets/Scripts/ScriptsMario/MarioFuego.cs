@@ -11,6 +11,7 @@ public class MarioFuego : MonoBehaviour
     public float jumpPower = 125f;
     public AudioControllerMario controlAudio;
     public GameObject clasic;
+    public GameObject banderaAnimada;
     public UI_Mario uiController;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class MarioFuego : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        banderaAnimada.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,17 +44,49 @@ public class MarioFuego : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        if (collision.gameObject.tag == "Cubo")
+        {
+            Debug.Log(collision.gameObject.tag);
+            controlAudio.rompeCube = true;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Si choca con una moneda se suma a su contador
+        if (collision.gameObject.tag == "Coin")
+        {
+            uiController.contador = uiController.contador + 1;
+            uiController.SetcoinText();
+            controlAudio.gotCoin = true;
+            Destroy(collision.gameObject);
+        }
+
+        //Si choca con la bandera gana 
+        if (collision.gameObject.tag == "Flag")
+        {
+            controlAudio.gano = true;
+            collision.gameObject.SetActive(false);
+            banderaAnimada.SetActive(true); //Se baja la bandera y mario ya no se puede mover
+            speed = 0f;
+            uiController.final = true;
+            uiController.SetFinal();
+
+        }
+
         //Si choca con el enemigo se destruye el enemigo
-        if (collision.gameObject.name == "Enemigo")
+        if (collision.gameObject.tag == "Enemy")
         {
             controlAudio.enemyCol = true;
             Destroy(collision.gameObject);
         }
 
-        //Si choca con la caparazon se cambia de personaje porque se pierde el PowerUp
-        if (collision.gameObject.name == "Caparazon")
+        //Si choca con la fantasma se cambia de personaje porque se pierde el PowerUp
+        if (collision.gameObject.name == "Fantasma")
         {
-            uiController.puntos = uiController.puntos + 100; 
+            uiController.puntos = uiController.puntos - 100;
             controlAudio.cap = true;
             Destroy(collision.gameObject);
             clasic.SetActive(true);
@@ -60,21 +94,30 @@ public class MarioFuego : MonoBehaviour
 
         }
 
-        //Si choca con una moneda se suma a su contador
-        if (collision.gameObject.tag == "Coin")
+        if (collision.gameObject.name == "Tuberia")
         {
-            uiController.contador = uiController.contador + 1;
-            uiController.SetcoinText();
+            controlAudio.tuberia = true;
+            gameObject.transform.position = new Vector2(159f, gameObject.transform.position.y);
+
+        }
+
+        if (collision.gameObject.name == "Hongo")
+        {
+            uiController.puntos = uiController.puntos + 200;
+            controlAudio.tuberia = true;
             Destroy(collision.gameObject);
             controlAudio.gotCoin = true;
-            Destroy(collision.gameObject);
 
         }
 
-        //Si choca con la bandera gana 
-        if (collision.gameObject.tag == "Flag")
+        if (collision.gameObject.name == "Princesa")
         {
             controlAudio.gano = true;
+            speed = 0f;
+            uiController.final = true;
+            uiController.SetFinal();
         }
+
+
     }
 }

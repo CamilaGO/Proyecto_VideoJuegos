@@ -12,7 +12,11 @@ public class AudioControllerMario : MonoBehaviour
     public AudioClip caparazon;
     public AudioClip moneda;
     public AudioClip enemy;
+    public AudioClip salePower;
+    public AudioClip entraTubo;
+
     public AudioSource audioS;
+
     public bool saltar;
     public bool mejorar;
     public bool fin;
@@ -20,6 +24,8 @@ public class AudioControllerMario : MonoBehaviour
     public bool cap;
     public bool gotCoin;
     public bool enemyCol;
+    public bool rompeCube;
+    public bool tuberia;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +81,20 @@ public class AudioControllerMario : MonoBehaviour
         {
             enemyCol = false;
             audioS.clip = enemy;
+            audioS.Play();
+        }
+
+        if (rompeCube == true)
+        {
+            rompeCube = false;
+            audioS.clip = salePower;
+            audioS.Play();
+        }
+
+        if (tuberia == true)
+        {
+            tuberia = false;
+            audioS.clip = entraTubo;
             audioS.Play();
         }
     }

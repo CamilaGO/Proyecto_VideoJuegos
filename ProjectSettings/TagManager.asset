@@ -7,6 +7,10 @@ TagManager:
   - Sky
   - Coin
   - Flag
+  - Mole
+  - Enemy
+  - Cubo
+  - Hongo
   layers:
   - Default
   - TransparentFX
