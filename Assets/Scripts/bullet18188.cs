@@ -5,25 +5,26 @@ using UnityEngine;
 public class bullet18188 : MonoBehaviour
 {
     float moveSpeed = 5;
-    public GameObject n;
+    //public GameObject n;
     Vector2 pos;
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 offset = new Vector3(0, 0.4f,0);
-        transform.position = n.GetComponent<Transform>().position + offset;
+        Vector3 offset = new Vector3(0, 1.2f,0);
+        //transform.position = n.GetComponent<Transform>().position + offset;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Sky"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

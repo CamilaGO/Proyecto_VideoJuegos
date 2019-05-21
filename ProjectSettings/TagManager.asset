@@ -57,3 +57,6 @@ TagManager:
   - name: Personajes
     uniqueID: 1068674647
     locked: 0
+  - name: Frente
+    uniqueID: 3176474203
+    locked: 0

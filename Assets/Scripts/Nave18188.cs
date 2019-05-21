@@ -7,6 +7,7 @@ public class Nave18188 : MonoBehaviour
     // Start is called before the first frame update
     float moveSpeed = 3;
     public GameObject prefab;
+    Vector3 offset = new Vector3(0, 1.2f, 0);
     void Start()
     {
         
@@ -21,6 +22,7 @@ public class Nave18188 : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space))
-            Instantiate(prefab, GetComponent<Transform>().position, Quaternion.identity);
+            Instantiate(prefab, GetComponent<Transform>().position + offset, Quaternion.identity);
+
     }
 }
