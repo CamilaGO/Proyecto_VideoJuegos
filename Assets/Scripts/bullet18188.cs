@@ -7,11 +7,13 @@ public class bullet18188 : MonoBehaviour
     float moveSpeed = 5;
     //public GameObject n;
     Vector2 pos;
+    public GameObject manager;
     // Start is called before the first frame update
     void Start()
     {
         Vector3 offset = new Vector3(0, 1.2f,0);
         //transform.position = n.GetComponent<Transform>().position + offset;
+
 
     }
 
@@ -24,6 +26,7 @@ public class bullet18188 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            //manager.GetComponent<ManagerSI18188>().sumaPuntos();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
