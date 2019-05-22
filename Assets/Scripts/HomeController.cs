@@ -36,7 +36,7 @@ public class HomeController : MonoBehaviour
             naves.SetActive(false);
             contador += 1;
         }
-        if (contador == 1)
+        else if (contador == 1)
         {
             principal.SetActive(false);
             mario.SetActive(false);
@@ -44,7 +44,7 @@ public class HomeController : MonoBehaviour
             mole.SetActive(true);
             contador += 1;
         }
-        if (contador == 2)
+        else if (contador == 2)
         {
             mole.SetActive(false);
             principal.SetActive(false);

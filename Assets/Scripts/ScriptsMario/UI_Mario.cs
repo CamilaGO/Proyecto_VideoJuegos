@@ -18,14 +18,14 @@ public class UI_Mario : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        perdioText.SetActive(false);
+        winText.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        perdioText.SetActive(false);
-        winText.SetActive(false);
+        
     }
 
     public void Replay(string _newScene)
