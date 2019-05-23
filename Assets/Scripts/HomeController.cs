@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HomeController : MonoBehaviour
 {
@@ -28,7 +29,33 @@ public class HomeController : MonoBehaviour
 
     public void clickNext()
     {
-        if(contador == 0)
+        switch (contador)
+        {
+            case 0:
+                principal.SetActive(false);
+                mario.SetActive(true);
+                mole.SetActive(false);
+                naves.SetActive(false);
+                contador += 1;
+                break;
+
+            case 1:
+                principal.SetActive(false);
+                mario.SetActive(false);
+                naves.SetActive(false);
+                mole.SetActive(true);
+                contador += 1;
+                break;
+
+            case 2:
+                mole.SetActive(false);
+                principal.SetActive(false);
+                mario.SetActive(false);
+                naves.SetActive(true);
+                contador = 0;
+                break;
+        }
+        /*if(contador == 0)
         {
             principal.SetActive(false);
             mario.SetActive(true);
@@ -51,6 +78,11 @@ public class HomeController : MonoBehaviour
             mario.SetActive(false);
             naves.SetActive(true);
             contador = 0;
-        }
+        }*/
+    }
+
+    public void OpenScene(string _newScene)
+    {
+        SceneManager.LoadScene(_newScene);
     }
 }

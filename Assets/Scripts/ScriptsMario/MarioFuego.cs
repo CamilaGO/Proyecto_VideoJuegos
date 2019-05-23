@@ -96,7 +96,7 @@ public class MarioFuego : MonoBehaviour
 
         }
 
-        if (collision.gameObject.name == "Tuberia")
+        if (collision.gameObject.tag == "Tuberia")
         {
             controlAudio.tuberia = true;
             gameObject.transform.position = new Vector2(159f, gameObject.transform.position.y);

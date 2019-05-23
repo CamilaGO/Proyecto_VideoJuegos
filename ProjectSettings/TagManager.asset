@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Cubo
   - Hongo
+  - Tuberia
   layers:
   - Default
   - TransparentFX

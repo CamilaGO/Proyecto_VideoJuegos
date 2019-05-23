@@ -9,7 +9,6 @@ public class Enemigo : MonoBehaviour
     public float izq;
     private Rigidbody2D myBody2D;
     public float speed = 10f;
-    bool movingRight = true;
     // Start is called before the first frame update
     void Start()
     {
