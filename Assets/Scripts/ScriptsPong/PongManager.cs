@@ -4,30 +4,49 @@ using UnityEngine;
 
 public class PongManager : MonoBehaviour
 {
-    public Pelota pelota;
-    public Barra barra;
+    //Barra Izquierda: Se controla con W/S
+    //Barra Derecha: Se controla con flechas arriba/abajo
+    public GameObject barraIzq;
+    public GameObject barraDer;
 
-    public static Vector2 bottomIzq;
-    public static Vector2 topDer;
 
     // Start is called before the first frame update
     void Start()
     {
-        bottomIzq = Camera.main.ScreenToWorldPoint(new Vector2(0, 0));
-        topDer = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-        
-        //Se crean 2 barras y 1 pelota al iniciar el juego
-        Instantiate(pelota);
-        Barra barra1 = Instantiate(barra) as Barra;
-        Barra barra2 = Instantiate(barra) as Barra;
-        barra1.Init(true);  //barra derecha
-        barra1.Init(false);   //barra izquierda
 
     }
 
     // Update is called once per frame
     void Update()
-    {
+
+    {   //La barra izquierda no se mueve hasta que presionen las teclas
+        barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
         
+        //Si presiona W la barra izquierda sube
+        if (Input.GetKey(KeyCode.W))
+        {
+            barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 7f);
+        }
+        //Si presiona S la barra izquierda baja
+        else if (Input.GetKey(KeyCode.S))
+        {
+            barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -7f);
+        }
+
+        //La barra derecha no se mueve hasta que presionen las teclas
+        barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+
+        //Si presiona W la barra derecha  sube
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 7f);
+        }
+        //Si presiona S la barra derecha baja
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -7f);
+        }
+
+
     }
 }
