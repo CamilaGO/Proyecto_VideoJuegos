@@ -12,6 +12,8 @@ TagManager:
   - Cubo
   - Hongo
   - Tuberia
+  - Barra
+  - Pelota
   layers:
   - Default
   - TransparentFX
