@@ -79,6 +79,8 @@ public class MarioFuego : MonoBehaviour
         //Si choca con el enemigo se destruye el enemigo
         if (collision.gameObject.tag == "Enemy")
         {
+            uiController.puntos = uiController.puntos + 100;
+            uiController.SetpuntosText();
             controlAudio.enemyCol = true;
             Destroy(collision.gameObject);
         }

@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2791937ffb6723549bcabb991af654dc
+  - enabled: 1
+    path: Assets/Scenes/Mario_1.unity
+    guid: 6420a3099b08c9d4f874888777427a84
+  - enabled: 1
+    path: Assets/Scenes/Mario_2.unity
+    guid: e5e7655035a5efd4a97722b21ed0790f
+  - enabled: 1
+    path: Assets/Scenes/WhackAMole.unity
+    guid: c50023fb2ebb45c4b9c2c287a0e5ea3a
+  - enabled: 1
+    path: Assets/Scenes/SpaceInvaders.unity
+    guid: 854bcc067f3908644bfd5b3bbd541245
   m_configObjects: {}

@@ -16,6 +16,7 @@ public class AudioControllerMario : MonoBehaviour
     public AudioClip entraTubo;
 
     public AudioSource audioS;
+    public GameObject musicFondo;
 
     public bool saltar;
     public bool mejorar;
@@ -59,6 +60,7 @@ public class AudioControllerMario : MonoBehaviour
         if (gano == true)
         {
             gano = false;
+            musicFondo.GetComponent<AudioSource>().Pause();
             audioS.clip = win;
             audioS.Play();
         }
