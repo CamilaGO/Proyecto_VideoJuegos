@@ -16,7 +16,7 @@ public class UI_Mario : MonoBehaviour
     public GameObject winText;
     public GameObject perdioText;
     //Variables para controlar pausas y escenas
-    public string sceneName;
+    public string sceneName = "Mario_2";
     private bool isPause = false;
 
     // Start is called before the first frame update
@@ -45,6 +45,7 @@ public class UI_Mario : MonoBehaviour
 
     public void Restart(string _newScene)
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(_newScene);
     }
 

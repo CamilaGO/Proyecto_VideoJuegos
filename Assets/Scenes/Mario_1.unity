@@ -2759,6 +2759,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4968597184944281444, guid: c5ab4fc91aa92c0439103d5c104b8186,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968597184944281444, guid: c5ab4fc91aa92c0439103d5c104b8186,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 4968597184944281444, guid: c5ab4fc91aa92c0439103d5c104b8186,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968597184944281435, guid: c5ab4fc91aa92c0439103d5c104b8186,
+        type: 3}
+      propertyPath: menuPause
+      value: 
+      objectReference: {fileID: 1273937889}
+    - target: {fileID: 4968597184944281435, guid: c5ab4fc91aa92c0439103d5c104b8186,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 862891361}
+    - target: {fileID: 7795132114528278766, guid: c5ab4fc91aa92c0439103d5c104b8186,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 280492275473089529, guid: c5ab4fc91aa92c0439103d5c104b8186,
         type: 3}
       propertyPath: m_IsActive
@@ -2882,22 +2913,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 7795132114528278766, guid: c5ab4fc91aa92c0439103d5c104b8186,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968597184944281444, guid: c5ab4fc91aa92c0439103d5c104b8186,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968597184944281444, guid: c5ab4fc91aa92c0439103d5c104b8186,
-        type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
-        type: 0}
     - target: {fileID: 6288559997232172237, guid: c5ab4fc91aa92c0439103d5c104b8186,
         type: 3}
       propertyPath: m_IsActive
@@ -2908,11 +2923,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4968597184944281435, guid: c5ab4fc91aa92c0439103d5c104b8186,
-        type: 3}
-      propertyPath: menuPause
-      value: 
-      objectReference: {fileID: 1273937889}
     - target: {fileID: 8961320712956285120, guid: c5ab4fc91aa92c0439103d5c104b8186,
         type: 3}
       propertyPath: m_AnchoredPosition.x
