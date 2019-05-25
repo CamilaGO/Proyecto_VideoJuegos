@@ -25,12 +25,12 @@ public class PongManager : MonoBehaviour
         //Si presiona W la barra izquierda sube
         if (Input.GetKey(KeyCode.W))
         {
-            barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 7f);
+            barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 9f);
         }
         //Si presiona S la barra izquierda baja
         else if (Input.GetKey(KeyCode.S))
         {
-            barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -7f);
+            barraIzq.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -9f);
         }
 
         //La barra derecha no se mueve hasta que presionen las teclas
@@ -39,12 +39,12 @@ public class PongManager : MonoBehaviour
         //Si presiona W la barra derecha  sube
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 7f);
+            barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 9f);
         }
         //Si presiona S la barra derecha baja
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -7f);
+            barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -9f);
         }
 
 
