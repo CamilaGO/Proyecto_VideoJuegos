@@ -5,6 +5,8 @@ using UnityEngine;
 public class Pelota : MonoBehaviour
 {
     Rigidbody2D rb;
+    public ScorePong controladorPuntos;
+    public PongManager controladorBarras;
 
     // Start is called before the first frame update
     void Start()
@@ -20,22 +22,30 @@ public class Pelota : MonoBehaviour
         //Se revisa si salio de pantalla la pelota
         if(transform.position.x < -25f)
         {
-            //si sale por izquierda, se regresa a la posicion inicial y comienza a moverse
+            //si sale por izquierda, todo se regresa a la posicion inicial y se incrementa score de oponente
+            controladorPuntos.ganoRight();
             transform.position = Vector2.zero;
+            controladorBarras.regresarBarras();
+            //espera un poco antes de moverse otra vez
+            rb.velocity = Vector2.zero;
             StartCoroutine(Pausa());
 
         }
         if (transform.position.x > 25f)
         {
-            // si sale por derecha, se regresa a la posicion inicial y comienza a moverse
-            transform.position = Vector2.zero; 
+            // si sale por derecha, todo se regresa a la posicion inicial y se incrementa score de oponente
+            controladorPuntos.ganoLeft();
+            transform.position = Vector2.zero;
+            controladorBarras.regresarBarras();
+            //espera un poco antes de moverse otra vez
+            rb.velocity = Vector2.zero;
             StartCoroutine(Pausa());
         }
     }
 
     IEnumerator Pausa()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         Movimiento();  //Despues de esperar inicia a moverse la esfera
     }
 

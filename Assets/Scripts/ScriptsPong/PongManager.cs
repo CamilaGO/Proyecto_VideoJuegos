@@ -46,7 +46,12 @@ public class PongManager : MonoBehaviour
         {
             barraDer.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -9f);
         }
+        
+    }
 
-
+    public void regresarBarras()
+    {
+        barraDer.transform.position = new Vector3(21f, 0f, 0.1437345f);
+        barraIzq.transform.position = new Vector3(-21f, 0f, 0.1437345f);
     }
 }
