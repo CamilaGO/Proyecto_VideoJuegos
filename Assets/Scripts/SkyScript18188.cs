@@ -20,4 +20,13 @@ public class SkyScript18188 : MonoBehaviour
     {
         Destroy(collision.gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BalaEnemiga"))
+        {
+            Destroy(collision.gameObject);
+        }
+        
+    }
 }

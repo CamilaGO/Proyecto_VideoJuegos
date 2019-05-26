@@ -8,6 +8,10 @@ public class Nave18188 : MonoBehaviour
     float moveSpeed = 3;
     public GameObject prefab;
     Vector3 offset = new Vector3(0, 1.2f, 0);
+    public int life = 100;
+    bool isAlive = true;
+    float timeScale = 1.0f;
+    public AudioSource end;
     void Start()
     {
         
@@ -22,7 +26,40 @@ public class Nave18188 : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gameObject.GetComponent<AudioSource>().Play();
             Instantiate(prefab, GetComponent<Transform>().position + offset, Quaternion.identity);
+        }
+            
+        if (life == 0)
+        {
+            
+            isAlive = false;
+            if (timeScale >= 0.01f)
+            {
+                timeScale = timeScale - 0.01f;
+                Time.timeScale = Mathf.Abs(timeScale);
+            }   
+            if (timeScale == 0)
+            {
+                Time.timeScale = 0;
+            }
+        }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BalaEnemiga") && isAlive)
+        {
+            end.Play();
+            life = life - 10;
+            Destroy(collision.gameObject);
+
+        }
+    }
+
+    public void takeHit()
+    {
+        life = life - 10;
     }
 }
