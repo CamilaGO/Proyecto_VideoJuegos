@@ -7,12 +7,14 @@ public class Pelota : MonoBehaviour
     Rigidbody2D rb;
     public ScorePong controladorPuntos;
     public PongManager controladorBarras;
+    private AudioSource sonido;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(Pausa()); //Se esperan 2.5s segundos antes de comenzar a moverse
+        sonido = GetComponent<AudioSource>();
 
     }
 
@@ -86,6 +88,7 @@ public class Pelota : MonoBehaviour
         //Si choca con los limites de la pantalla
         if (collision.gameObject.tag == "Limite")
         {
+            sonido.Play();
             float direccionX = 0f;
 
             if (rb.velocity.x > 0f)
@@ -107,6 +110,7 @@ public class Pelota : MonoBehaviour
         //Si choca con las barras
         if (collision.gameObject.name == "BarraIzq")
         {
+            sonido.Play();
             rb.velocity = new Vector2(13f, 0f);
 
             //Si choca en el inferior de la barra izquierda
@@ -124,6 +128,7 @@ public class Pelota : MonoBehaviour
 
         if (collision.gameObject.name == "BarraDer")
         {
+            sonido.Play();
             rb.velocity = new Vector2(-13f, 0f);
 
             //Si choca en el inferior de la barra derecga
