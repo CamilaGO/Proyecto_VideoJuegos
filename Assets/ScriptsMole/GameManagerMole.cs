@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class GameManagerMole : MonoBehaviour
 {
     //timer
     int playTime=60;
     int segs, mins;
-
+    Text panelText;
     static int curlevel = 1;
     int baseScore = 25;
     int scoreMeta;
+    public PauseMenu control;
+    public string scenename = "SampleScene";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,7 @@ public class GameManagerMole : MonoBehaviour
         UIManagerMole.instance.UpdateUI(0, scoreMeta);
         UIManagerMole.instance.UpdateLevel(curlevel);
         StartCoroutine("Timer");
+
         
     }
     IEnumerator Timer() {
@@ -33,6 +39,7 @@ public class GameManagerMole : MonoBehaviour
         }
         Debug.Log("Timer has ended");
         CheckForWin();
+        
         //Win
 
         //lose
@@ -48,6 +55,7 @@ public class GameManagerMole : MonoBehaviour
         else {
             //lose
             Debug.Log("Loser");
+            control.loser();
         }
     }
 }

@@ -17,6 +17,7 @@ TagManager:
   - Limite
   - BalaEnemiga
   - ship
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

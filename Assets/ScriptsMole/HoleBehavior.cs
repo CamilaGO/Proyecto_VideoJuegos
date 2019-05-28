@@ -36,7 +36,7 @@ public class HoleBehavior : MonoBehaviour
     int rarity() {
         int num = Random.Range(1, 101);
 
-        if (num <= 10)
+        if (num <= 5)
         {
             return 4;
         }

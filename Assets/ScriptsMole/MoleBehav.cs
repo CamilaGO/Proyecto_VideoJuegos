@@ -10,12 +10,14 @@ public class MoleBehav : MonoBehaviour
     [HideInInspector] public GameObject myPar;
     public GameObject popupText;
     [HideInInspector]public Animator anim;
+    AudioSource audiodata;
+    public AudioClip audio;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         col = GetComponent<Collider>();
-       
+        audiodata = GetComponent<AudioSource>();
         col.enabled = false;
     }
 
@@ -32,10 +34,13 @@ public class MoleBehav : MonoBehaviour
     //for hits  and points
     public void GotHit()
     {
+        //audiodata.Play();
+        //audiodata.PlayOneShot(audio, 0.7f);
         hitPoints--;
         if (hitPoints > 0)
         {
             col.enabled = true;
+            
         }
         else {
             myPar.GetComponent<HoleBehavior>().hasMole = false;
@@ -48,7 +53,7 @@ public class MoleBehav : MonoBehaviour
             PopText popText = pop.GetComponent<PopText>();
 
             popText.Show(score);
-
+            
             Destroy(gameObject);
         }
         //put in points HERE
