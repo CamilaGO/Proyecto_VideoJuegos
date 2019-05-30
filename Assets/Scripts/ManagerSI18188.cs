@@ -16,10 +16,17 @@ public class ManagerSI18188 : MonoBehaviour
     public Text youLost;
     public Button tryAgain;
     public Button mainMenu;
+    public Text Pausa;
+
+    bool isPaused;
     int vida;
     // Start is called before the first frame update
     void Start()
     {
+        
+        Time.timeScale = 1.0f;
+        isPaused = false;
+        
         score.text = "Score: 0";
         for (int i = 0; i < lista.Length; i++)
         {
@@ -44,6 +51,11 @@ public class ManagerSI18188 : MonoBehaviour
             youLost.gameObject.SetActive(true);
             tryAgain.gameObject.SetActive(true);
             mainMenu.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            pausar();
         }
     }
 
@@ -85,5 +97,22 @@ public class ManagerSI18188 : MonoBehaviour
     {
         SceneManager.LoadScene(name);
         Time.timeScale = 1.0f;
+    }
+
+    private void pausar()
+    {
+        if (isPaused){
+            Time.timeScale = 0;
+            Pausa.gameObject.SetActive(isPaused);
+            tryAgain.gameObject.SetActive(isPaused);
+            mainMenu.gameObject.SetActive(isPaused);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Pausa.gameObject.SetActive(isPaused);
+            tryAgain.gameObject.SetActive(isPaused);
+            mainMenu.gameObject.SetActive(isPaused);
+        }
     }
 }
